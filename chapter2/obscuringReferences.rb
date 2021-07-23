@@ -24,7 +24,13 @@ class RevealingReferences
     # collectを使っているから、何かwheelが列挙されているものであること
     # その列挙されているものは、rimとtireに紐付いていること
     # 上記の二つが下のコードからわかる。配列の内部構造は何も知らない
-    wheels.collect { |wheel| wheel.rim + (wheel.tire * 2) }
+    # wheels.collect { |wheel| wheel.rim + (wheel.tire * 2) }
+    wheels.collect { |wheel| diameter(wheel) }
+  end
+
+  # ここで計算を抽出。繰り返し処理と分割する
+  def diameter(wheel)
+    wheel.rim + (wheel.tire * 2)
   end
 
   # ここでStructクラスを用いて簡易的なクラスを用意。
