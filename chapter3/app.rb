@@ -18,7 +18,7 @@ class Gear
     # Wheelクラスのメソッドを知っている
     # Wheelクラスのインスタンス化（＝メッセージ）に要求される引数を知っている
     # Wheelクラスの引数の順番を知っている
-    # これが依存。依存関係。
+    # これが依存。依存関係
     ratio * Wheel.new(rim, tire).diameter
   end
 end
