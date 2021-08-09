@@ -1,11 +1,10 @@
 class Gear
-  attr_reader :chainring, :cog, :rim, :tire
+  attr_reader :chainring, :cog, :wheel
 
-  def initialize(chainring, cog, rim, tire)
+  def initialize(chainring, cog, wheel)
     @chainring = chainring
     @cog       = cog
-    @rim       = rim
-    @tire      = tire
+    @wheel     = wheel
   end
 
   def ratio
@@ -19,7 +18,10 @@ class Gear
     # Wheelクラスのインスタンス化（＝メッセージ）に要求される引数を知っている
     # Wheelクラスの引数の順番を知っている
     # これが依存。依存関係
-    ratio * Wheel.new(rim, tire).diameter
+    # ratio * Whell.new(rim, tire).diameter
+    # ratio * Chain.new(rim, tire).diameter
+    # ratio * Hoge.new(rim, tire).diameter
+    ratio * wheel.diameter
   end
 end
 
@@ -40,4 +42,5 @@ class Wheel
   end
 end
 
-p Gear.new(52, 11, 26, 1.5).gear_inches
+# Wheelクラスのインスタンス生成を、Gearクラスの外に出す。疎結合に。
+p Gear.new(52, 11, Wheel.new(26, 1.5)).gear_inches
