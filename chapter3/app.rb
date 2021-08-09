@@ -21,7 +21,13 @@ class Gear
     # ratio * Whell.new(rim, tire).diameter
     # ratio * Chain.new(rim, tire).diameter
     # ratio * Hoge.new(rim, tire).diameter
-    ratio * wheel.diameter
+    ratio * diameter
+  end
+
+  # 上のメッセージはself(=Gear)にしか依存していない
+  # このメソッドのみが@wheelに依存している
+  def diameter
+    wheel.diameter
   end
 end
 
