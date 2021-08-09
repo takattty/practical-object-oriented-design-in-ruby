@@ -1,10 +1,10 @@
 class Gear
   attr_reader :chainring, :cog, :wheel
 
-  def initialize(chainring, cog, wheel)
-    @chainring = chainring
-    @cog       = cog
-    @wheel     = wheel
+  def initialize(args)
+    @chainring = args[:chainring]
+    @cog       = args[:cog]
+    @wheel     = args[:wheel]
   end
 
   def ratio
@@ -49,4 +49,7 @@ class Wheel
 end
 
 # Wheelクラスのインスタンス生成を、Gearクラスの外に出す。疎結合に。
-p Gear.new(52, 11, Wheel.new(26, 1.5)).gear_inches
+p Gear.new(
+  :chainring => 52,
+  :cog       => 11,
+  :wheel     => Wheel.new(26, 1.5)).gear_inches
